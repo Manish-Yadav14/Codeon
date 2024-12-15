@@ -1,9 +1,10 @@
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu"
 import { Button } from "../ui/button"
+import { NavLink } from "react-router-dom"
 
 export function Navbar() {
   return (
-    <header className="fixed top-0 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
+    <main className="fixed top-0 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       <div className="container flex h-14 items-center">
         <div className="mr-4 flex">
           <a href="/" className="mr-6 flex items-center space-x-2">
@@ -39,10 +40,14 @@ export function Navbar() {
           </NavigationMenu>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button variant="outline">Login</Button>
-          <Button>Get Started</Button>
+          <NavLink to='/login'>
+            <Button variant="outline">Login</Button>
+          </NavLink>
+          <NavLink to='/signup'>
+            <Button>Get Started</Button>
+          </NavLink>
         </div>
       </div>
-    </header>
+    </main>
   )
 }
