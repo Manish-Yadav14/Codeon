@@ -12,7 +12,7 @@ function Homepage() {
       <Navbar />
       <main className="flex-1">
         <Hero />
-        <Features />
+        <Features />  
         {/* <Stats /> */}
         <Technologies/>
         {/* <Testimonials /> */}

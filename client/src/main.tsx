@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/authorisation/ProtectedRoute'
+import Problems from './pages/Problems';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,7 +15,8 @@ const router = createBrowserRouter(
       <Route path='/' element={<Homepage/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
-      <Route path='/dashboard' element={
+      <Route path='/problems' element={<Problems/>}/>
+      <Route path='/problems/:problemSlug' element={
         <ProtectedRoute>
           <Dashboard/>
         </ProtectedRoute>

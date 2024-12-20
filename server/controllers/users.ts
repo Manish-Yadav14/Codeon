@@ -1,7 +1,7 @@
 import {Request,Response} from 'express';
 import prisma from '../db';
 import bcrypt from 'bcryptjs'
-import jwt, { decode } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 require('dotenv').config();
 
 const SECRET_KEY: string | undefined = process.env.SECRET_KEY;
@@ -41,10 +41,9 @@ export const login = async(req:Request,res:Response):Promise<void> =>{
 
         // Generating token for user
         const token = generateToken(user);
-        console.log(token);
 
         res.send(token)
-        return ;
+        return;
 
     } catch (error) {
         res.send(error)
@@ -83,7 +82,6 @@ export const authenticate = (req:Request,res:Response)=>{
     const {token} = req.body;
     try {
         const decodedToken = jwt.verify(token,SECRET_KEY);
-        console.log(decodedToken)
         res.send(decodedToken)
     } catch (error) {
         console.error(error);

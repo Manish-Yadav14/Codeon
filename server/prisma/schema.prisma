@@ -9,9 +9,64 @@ datasource db {
 }
 
 model User {
-  id        String      @id @default(uuid())
+  id        String   @id @default(uuid())
   name      String
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
 }
+
+enum Topics {
+  Array
+  String
+  Hash_Table
+  Dynamic_Programming
+  Math
+  Sorting
+  Greedy
+  Depth_First_Search
+  Database
+  Binary_Search
+  Matrix
+  Tree
+  Breadth_First_Search
+  Bit_Manipulation
+  Two_Pointers
+  Prefix_Sum
+  Priority_Queue
+  Binary_Tree
+  Simulation
+  Stack
+  Graph
+  Counting
+  Sliding_Window
+  Backtracking
+  Linked_List
+}
+
+enum Difficulty {
+  Easy
+  Medium 
+  Hard
+}
+
+model Testcases {
+  testcaseId String  @id @default(uuid())
+  problemId  String  // Foreign key to Problems model
+  input      Json  // Example field
+  output     Json  // Example field
+
+  problem    Problems @relation(fields: [problemId], references: [problemId]) 
+}
+
+model Problems {  
+  problemId  String @id @default(uuid()) 
+  title      String
+  slug       String  @unique
+  statement  String
+  difficulty Difficulty
+  topics     Topics[]
+  testcases  Testcases[]
+}
+
+

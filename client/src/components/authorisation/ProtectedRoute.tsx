@@ -15,7 +15,6 @@ function ProtectedRoute ({ children }:ProtectedRouteProps) {
     if(token){
         try {
             const res = await axios.post(`http://localhost:5000/auth/authenticate`, { token });
-            console.log(res);
             if (res.status === 200) {
               setAuthenticated(true);  // Authenticated successfully
             } else {
